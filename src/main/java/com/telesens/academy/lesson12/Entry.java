@@ -53,7 +53,7 @@ public class Entry implements Comparable<Entry> {
     }
 
     @Override
-    public int compareTo(Entry o) {
-        return this.getValue().compareTo(o.getValue());
+    public int compareTo(Entry other) {
+        return this.getValue().compareTo(other.getValue());
     }
 }
