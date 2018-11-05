@@ -1,7 +1,7 @@
 package com.telesens.academy.automationpractice;
 
-import com.academy.telesens.automationpractice.annotation.Log;
-import com.academy.telesens.automationpractice.annotation.TestRun;
+import com.telesens.academy.automationpractice.annotation.Log;
+import com.telesens.academy.automationpractice.annotation.TestRun;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

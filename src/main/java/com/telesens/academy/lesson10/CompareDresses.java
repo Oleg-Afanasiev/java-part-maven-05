@@ -1,6 +1,6 @@
 package com.telesens.academy.lesson10;
 
-import com.academy.telesens.automationpractice.model.EntityDress;
+import com.telesens.academy.automationpractice.model.EntityDress;
 
 import java.util.Arrays;
 

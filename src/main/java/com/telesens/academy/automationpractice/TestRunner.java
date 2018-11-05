@@ -1,8 +1,8 @@
 package com.telesens.academy.automationpractice;
 
 import com.academy.automationpractice.ddt.framework.model.AddressData;
-import com.academy.telesens.automationpractice.address.ParseAddressDemo;
-import com.academy.telesens.automationpractice.model.EntityDress;
+import com.telesens.academy.automationpractice.address.ParseAddressDemo;
+import com.telesens.academy.automationpractice.model.EntityDress;
 
 public class TestRunner {
     public static void main(String[] args) {

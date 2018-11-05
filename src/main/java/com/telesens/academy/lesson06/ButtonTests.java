@@ -1,6 +1,7 @@
 package com.telesens.academy.lesson06;
 
-import com.academy.telesens.lesson06.components.Button;
+
+import com.telesens.academy.lesson06.components.Button;
 
 public class ButtonTests {
     public static void main(String[] args) {
