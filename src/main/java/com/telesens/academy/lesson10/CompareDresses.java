@@ -39,7 +39,7 @@ public class CompareDresses {
         return Arrays.equals(expected, actual);
     }
 
-    private static EntityDress[] getExpectedDresses() {
+    public static EntityDress[] getExpectedDresses() {
         return new EntityDress[]{
                 new EntityDress()
                         .withModel("demo_1")
@@ -71,7 +71,7 @@ public class CompareDresses {
         };
     }
 
-    private static EntityDress[] getActualDresses() {
+    public static EntityDress[] getActualDresses() {
         return new EntityDress[]{
                 new EntityDress()
                         .withModel("demo_3")

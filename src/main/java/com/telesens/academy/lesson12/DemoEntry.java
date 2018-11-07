@@ -1,7 +1,9 @@
 package com.telesens.academy.lesson12;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class DemoEntry {
     public static void main(String[] args) {
@@ -36,8 +38,11 @@ public class DemoEntry {
 
         EntryGeneric [] entryGen = new EntryGeneric[3];
         entryGen[0] = entry1;
-        entryGen[1] = entry2;
+        entryGen[1] = entry3;
+        entryGen[2] = entry2;
         System.out.println(entryGen[0]);
         System.out.println(entryGen[1]);
+        Arrays.sort(entryGen, new GenericComparator());
+        System.out.println(Arrays.toString(entryGen));
     }
 }

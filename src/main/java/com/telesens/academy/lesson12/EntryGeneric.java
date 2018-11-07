@@ -2,7 +2,7 @@ package com.telesens.academy.lesson12;
 
 import java.util.Objects;
 
-public class EntryGeneric<K, V> {
+public class EntryGeneric<K, V>{
     private K key;
     private V value;
 
