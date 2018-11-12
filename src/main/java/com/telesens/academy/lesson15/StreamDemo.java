@@ -82,6 +82,12 @@ public class StreamDemo {
                 .max(Integer::compareTo);
 
         System.out.println("Max: " + max.get());
+
+        // Пример 5
+        System.out.println("Пример 5 - генерация");
+        Stream.generate(()->new Random().nextInt())
+                .limit(10)
+                .forEach(System.out::println);
     }
 
 
