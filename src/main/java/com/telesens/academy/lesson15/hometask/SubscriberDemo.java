@@ -1,5 +1,6 @@
 package com.telesens.academy.lesson15.hometask;
 
+import java.io.*;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -21,31 +22,49 @@ public class SubscriberDemo {
     private static String [] lastNames = {"Корженко", "Михайленко", "Кузьменко", "Клопотенко", "Половик"};
     private static Random rand =  new Random();
     private static long id = 1L;
+
+    // TODO
+    private static String txt = "subscribers.txt";
+    private static String xls = "subscribers.xlsx";
+
     public static void main(String[] args) {
 
-        System.out.println("***Generate***");
-        Subscriber[] array =
-        Stream
-                .generate(SubscriberDemo::nextSubscriber)
+//        OutputStream os = new FileOutputStream("");
+//        OutputStreamWriter osw = new OutputStreamWriter(os);
+        try (FileWriter fw = new FileWriter(txt)) {
+            System.out.println("***Generate***");
+            Subscriber[] array =
+                    Stream
+                            .generate(SubscriberDemo::nextSubscriber)
 //                .generate(()->SubscriberDemo.nextSubscriber()) // можно так
 //                .generate(()->{
 //                    return SubscriberDemo.nextSubscriber();
 //                }) // можно и так
-                .limit(100)
-                .filter(SubscriberDemo.distinctBy(Subscriber::getPhoneNumber))
-                .peek(System.out::println)
-                .toArray(Subscriber[]::new);
-        System.out.println("***Finish***");
+                            .limit(100)
+                            .filter(SubscriberDemo.distinctBy(Subscriber::getPhoneNumber))
+                            .peek(System.out::println)
+//                            .peek(ConsumerExceptional.wrap(s->fw.write(s.toString())))
+                            .peek(s->{
+                                try {
+                                    fw.write(s.toString()+"\n");
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            })
+                            .toArray(Subscriber[]::new);
+            System.out.println("***Finish***");
 
+            List<Subscriber> list = new ArrayList<>(Arrays.asList(array));
 
-        List<Subscriber> list = new ArrayList<>(Arrays.asList(array));
+            Arrays.sort(array);
+            System.out.println(Arrays.toString(array));
 
-        Arrays.sort(array);
-        System.out.println(Arrays.toString(array));
-
-        list.sort(Comparator.comparingInt(Subscriber::getAge));
+            list.sort(Comparator.comparingInt(Subscriber::getAge));
 //        list.sort((s1, s2)-> Integer.compare(s1.getAge(), s2.getAge()));
-        System.out.println(list);
+            System.out.println(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static Subscriber nextSubscriber() {
