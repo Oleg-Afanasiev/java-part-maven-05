@@ -24,14 +24,25 @@ public class SubscriberDemo {
     private static long id = 1L;
 
     // TODO
-    private static String txt = "subscribers.txt";
-    private static String xls = "subscribers.xlsx";
+    private static String txtFile = "subscribers.txtFile";
+    private static String xlsFile = "subscribers.xlsx";
+
+    private static String PROP_NAME = "java-part.properties";
 
     public static void main(String[] args) {
 
 //        OutputStream os = new FileOutputStream("");
 //        OutputStreamWriter osw = new OutputStreamWriter(os);
-        try (FileWriter fw = new FileWriter(txt)) {
+        Properties prop = new Properties();
+        InputStream resourceStream = SubscriberDemo.class.getClassLoader().getResourceAsStream(PROP_NAME);
+        try {
+            prop.load(resourceStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String subscriberFile = prop.getProperty("subscriber.txt");
+        try (FileWriter fw = new FileWriter(subscriberFile)) {
             System.out.println("***Generate***");
             Subscriber[] array =
                     Stream
