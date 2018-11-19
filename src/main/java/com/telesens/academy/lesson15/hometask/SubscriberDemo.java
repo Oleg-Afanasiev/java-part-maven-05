@@ -57,7 +57,8 @@ public class SubscriberDemo {
 //                            .peek(ConsumerExceptional.wrap(s->fw.write(s.toString())))
                             .peek(s->{
                                 try {
-                                    fw.write(s.toString()+"\n");
+//                                    fw.write(s.toString()+"\n");
+                                    fw.write(SubscriberDemo.prepareSubscriber(s)+"\n");
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -130,5 +131,9 @@ public class SubscriberDemo {
         final Set<Object> set = new HashSet<>();
 
         return t -> set.add(keyExtractor.apply(t));
+    }
+
+    private static String prepareSubscriber(Subscriber subscriber) {
+        return subscriber.getId()+","+subscriber.getFirstName();
     }
 }
