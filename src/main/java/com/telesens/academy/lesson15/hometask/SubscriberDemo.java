@@ -63,6 +63,7 @@ public class SubscriberDemo {
                                     e.printStackTrace();
                                 }
                             })
+                            .peek(SubscriberDemo::insertIntoDB)
                             .toArray(Subscriber[]::new);
             System.out.println("***Finish***");
 
@@ -135,5 +136,9 @@ public class SubscriberDemo {
 
     private static String prepareSubscriber(Subscriber subscriber) {
         return subscriber.getId()+","+subscriber.getFirstName();
+    }
+
+    private static void insertIntoDB(Subscriber subscriber) {
+
     }
 }
