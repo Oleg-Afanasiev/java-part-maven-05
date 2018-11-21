@@ -23,7 +23,6 @@ public class DemoJDBC {
         try {
             subsDao = new SubscriberDAOImpl(PropertyDemo.readProperty("jdbc.url"));
             subsDao.save(subscriber);
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
