@@ -40,17 +40,17 @@ public class LoginTests {
         baseUrl = "http://store.demoqa.com";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); }
 
-    @Test
-    public void testNegativeLogin() throws Exception {
+    @Test(dataProvider = "negativeLoginProvider")
+    public void testNegativeLogin(String login, String password, String errMessage) throws Exception {
         driver.get(baseUrl);
         WebElement myAccountLink = driver.findElement(By.className("account_icon"));
         myAccountLink.click();
         WebElement usernameField = driver.findElement(By.id("log"));
         usernameField.clear();
-        usernameField.sendKeys("Iraa");
+        usernameField.sendKeys(login);
         WebElement passwordField = driver.findElement(By.id("pwd"));
         passwordField.clear();
-        passwordField.sendKeys("passpass123passpass");
+        passwordField.sendKeys(password);
         WebElement loginButton = driver.findElement(By.id("login"));
         loginButton.click();
         Thread.sleep(3000); // bad practice
@@ -60,12 +60,19 @@ public class LoginTests {
         WebElement message = (new WebDriverWait(driver, 7))
                 .until(ExpectedConditions
                         .presenceOfElementLocated(By.className("response")));
-        Assert.assertEquals(message.getText(),"ERROR: Invalid username. Lost your password?");
+        Assert.assertEquals(message.getText(),errMessage);
     }
 
     @AfterClass
     public void setDown() {
         driver.quit();
+    }
+
+    @DataProvider(name="negativeLoginProvider")
+    public Object[][] negativeLoginProvider() {
+        return new Object[][]{
+                {"Iraa", "passpass123passpass", "ERROR: Invalid username. Lost your password?"}
+        };
     }
 
     protected boolean waitForJSandJQueryToLoad() {
