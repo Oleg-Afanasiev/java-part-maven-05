@@ -3,7 +3,7 @@
 
 <!--Конфигурация для testNG фреймворка-->
 <suite name="Base Suit">
-    <test name="firefox tests">
+    <test name="test1">
         <parameter name="browser" value="firefox" />
 
         <classes>
@@ -15,8 +15,7 @@
         </classes>
     </test>
 
-    <test name="chrome tests">
-        <parameter name="browser" value="chrome" />
+    <test name="test2">
         <classes>
             <class name="com.telesens.academy.tests.lesson21.LoginTests" >
                 <methods>

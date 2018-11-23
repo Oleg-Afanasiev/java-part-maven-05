@@ -53,16 +53,25 @@ public class LoginTests {
         passwordField.sendKeys(password);
         WebElement loginButton = driver.findElement(By.id("login"));
         loginButton.click();
-        Thread.sleep(3000); // bad practice
+//        Thread.sleep(3000); // bad practice
 //        waitForJSandJQueryToLoad();
 //        WebElement message = driver.findElement(By.className("response"));
-//        WebElement message = driver.findElement(By.xpath("//p[@class='response']/strong[contains(.,'ERROR')]/../text"));
-        WebElement message = (new WebDriverWait(driver, 7))
-                .until(ExpectedConditions
-                        .presenceOfElementLocated(By.className("response")));
+        WebElement message = driver.findElement(By.xpath("//p[@class='response'][contains(.,'ERROR')]"));
+//        WebElement message = (new WebDriverWait(driver, 7))
+//                .until(ExpectedConditions
+//                        .presenceOfElementLocated(By.className("response")));
         Assert.assertEquals(message.getText(),errMessage);
     }
 
+    @Test
+    public void test1() {
+        System.out.println("test1");
+    }
+
+    @Test
+    public void test2() {
+        System.out.println("test2");
+    }
     @AfterClass
     public void setDown() {
         driver.quit();
