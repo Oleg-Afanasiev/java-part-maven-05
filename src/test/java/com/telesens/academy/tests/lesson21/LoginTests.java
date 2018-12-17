@@ -1,5 +1,7 @@
 package com.telesens.academy.tests.lesson21;
 
+import com.telesens.academy.tests.demoga.page.MainPage;
+import com.telesens.academy.tests.demoga.page.YourAccountPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -42,12 +43,23 @@ public class LoginTests {
 
     @Test(dataProvider = "negativeLoginProvider")
     public void testNegativeLogin(String login, String password, String errMessage) throws Exception {
-        driver.get(baseUrl);
-        WebElement myAccountLink = driver.findElement(By.className("account_icon"));
-        myAccountLink.click();
-        WebElement usernameField = driver.findElement(By.id("log"));
-        usernameField.clear();
-        usernameField.sendKeys(login);
+//        driver.get(baseUrl);
+        // Длинно
+//        MainPage mainPage = new MainPage(driver);
+//        mainPage.goToHome();
+//        YourAccountPage yourAccountPage = mainPage.clickToMyAccount();
+
+        // Коротко
+        new MainPage(driver)
+                .goToHome()
+                .clickToMyAccount()
+                .enterLogin(login);
+
+//        WebElement usernameField = driver.findElement(By.id("log"));
+//        usernameField.clear();
+//        usernameField.sendKeys(login);
+//        YourAccountPage yourAccountPage = new YourAccountPage(driver);
+//        yourAccountPage.enterLogin(login);
         WebElement passwordField = driver.findElement(By.id("pwd"));
         passwordField.clear();
         passwordField.sendKeys(password);
@@ -61,6 +73,7 @@ public class LoginTests {
 //                .until(ExpectedConditions
 //                        .presenceOfElementLocated(By.className("response")));
         Assert.assertEquals(message.getText(),errMessage);
+       // Veri
     }
 
     @Test

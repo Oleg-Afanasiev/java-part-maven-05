@@ -53,7 +53,7 @@
                 <configuration>
                     <!--Путь к конфигурации testng.xml-->
                     <suiteXmlFiles>
-                        <suiteXmlFile>suits/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>suits/testng-specify-method.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

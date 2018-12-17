@@ -9,19 +9,19 @@
         <classes>
             <class name="com.telesens.academy.tests.lesson21.LoginTests" >
                 <methods>
-                    <include name="test1" />
+                    <include name="testNegativeLogin" />
                 </methods>
             </class>
         </classes>
     </test>
 
-    <test name="test2">
-        <classes>
-            <class name="com.telesens.academy.tests.lesson21.LoginTests" >
-                <methods>
-                    <include name="test2" />
-                </methods>
-            </class>
-        </classes>
-    </test>
+    <!--<test name="test2">-->
+        <!--<classes>-->
+            <!--<class name="com.telesens.academy.tests.lesson21.LoginTests" >-->
+                <!--<methods>-->
+                    <!--<include name="test2" />-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
 </suite>
