@@ -1,7 +1,6 @@
 package com.telesens.academy.tests.lesson21;
 
 import com.telesens.academy.tests.demoga.page.MainPage;
-import com.telesens.academy.tests.demoga.page.YourAccountPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -52,8 +51,8 @@ public class LoginTests {
         // Коротко
         new MainPage(driver)
                 .goToHome()
-                .clickToMyAccount()
-                .enterLogin(login);
+                .mainPage().clickToMyAccount()
+                .yourAccountPage().enterLogin(login);
 
 //        WebElement usernameField = driver.findElement(By.id("log"));
 //        usernameField.clear();
